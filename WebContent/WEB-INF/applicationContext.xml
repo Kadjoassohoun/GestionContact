@@ -1,0 +1,113 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+		
+		<bean id="idDAOContact" > 
+			<constructor-arg>
+				<ref bean="sessionFactory" />
+			</constructor-arg>
+		</bean>
+		 create beans  1
+		
+		<bean id="idContactKadjo" class="domain.Contact">
+			<property name="lastName" value="Kadjo"> </property>
+			<property name="firstName" value="Assohoun"> </property>
+			<property name="email" value="assohoun@gmail.com"> </property>
+			<property name="phones"> <ref bean="idPhoneKadjo"/> </property>
+			<property name="address"> <ref bean="idAddressKadjo"/> </property>
+		</bean>
+		
+		<bean id="idPhoneKadjo" class="domain.PhoneNumber">
+			<property name="phoneNumber" value="0627987678"> </property>
+			<property name="phoneKind" value="0123654345"> </property>
+		</bean>
+		
+		<bean id="idAddressKadjo" class="domain.Address">
+			<property name="country" value="France"></property>
+			<property name="city" value="Rueil"></property>
+			<property name="street" value="Des freres lumiere"></property>
+			<property name="zip" value="92500"></property>
+		</bean>
+		
+		 create beans 2
+		
+		<bean id="idContactCurry" class="domain.Contact">
+			<property name="lastName" value="Curry"> </property>
+			<property name="firstName" value="Stephen"> </property>
+			<property name="email" value="curry@aol.fr"> </property>
+			<property name="phones"> <ref bean="idPhoneCurry"/> </property>
+			<property name="address"> <ref bean="idAddressCurry"/> </property>
+		</bean>
+		
+		<bean id="idPhoneCurry" class="domain.PhoneNumber">
+			<property name="phoneNumber" value="06987655345"> </property>
+			<property name="phoneKind" value="0198762345"> </property>
+		</bean>
+		
+		<bean id="idAddressCurry" class="domain.Address">
+			<property name="country" value="USA" ></property>
+			<property name="city" value="Oakland" ></property>
+			<property name="street" value="Bay street" ></property>
+			<property name="zip" value="890000" ></property>
+		</bean>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<bean id="DAOContact" class="dao.DAOContact">
+			<constructor-arg>
+				<ref bean="sessionFactory"/>
+			</constructor-arg>
+		</bean>
+		
+		Constructor injection
+		
+		<bean id="contactAssohoun" class="domain.Contact" autowire="constructor">
+			<constructor-arg type="String" value="Assohoun"/>
+			<constructor-arg type="String" value="Elisée"/>
+			<constructor-arg type="String" value="assohoun@gmail.com"/>
+			<constructor-arg ref="adresseAssohoun"/>
+			<constructor-arg>  
+				<set>
+					<ref bean="phoneNumberAssohoun" />
+				</set>
+			</constructor-arg>
+		</bean>
+		
+		<bean id="adresseAssohoun" class="domain.Address">
+			<constructor-arg type="String" value="France"/>
+			<constructor-arg type="String" value="Rueil-Malmaison"/>
+			<constructor-arg type="String" value="Rue des freres lumiere"/>
+			<constructor-arg type="String" value="92500"/>
+		</bean>
+		
+		<bean id="phoneNumberNed" class="domain.PhoneNumber">
+			<constructor-arg type="String" value="0127000000" />
+			<constructor-arg type="String" value="0627000000" />
+			<property name="contact" ref="contactAssohoun" />
+		</bean>
+		
+		
+		
+		
+		
+		Aspects 
+		
+
+</beans>
+ -->

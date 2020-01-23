@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="domain">
+
+	<class name="Contact" table="CONTACT">
+
+		
+		<id name="id" column="ID">
+			<generator class="increment" />
+		</id>
+
+		<property name="lastName" type="string" column="LASTNAME" />
+		<property name="firstName" type="string" column="FIRSTNAME" />
+		<property name="email" type="string" column="EMAIL" />
+
+
+		<set name="phones" cascade="persist all-delete-orphan"
+			inverse="true">
+			<key column="id_contact" />
+			<one-to-many class="PhoneNumber" />
+		</set>
+
+		<many-to-one name="address" column="ADDRESS" cascade="all"
+			unique="true" not-null="true" />
+
+
+		<set name="groups" table="CONTACTINGROUP" inverse="true"
+			lazy="true" cascade="all">
+			<key column="ID_CONTACT" />
+			<many-to-many class="ContactGroup" column="ID_GROUP" />
+		</set>
+
+		<joined-subclass name="Entreprise">
+
+			<key column="entreprise_id" />
+
+			<property name="numSiret" column="NUMSIRET" />
+
+		</joined-subclass>
+
+	</class>
+</hibernate-mapping>
+
+
+
